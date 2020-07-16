@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/CorredorsVerticals_0.js"></script>
+        <script src="data/CorredorsTransversals_1.js"></script>
+        <script src="data/CorredorsMediterraniSud_2.js"></script>
+        <script src="data/CorredorsMediterraniNord_3.js"></script>
+        <script src="data/LiniesConflictives_4.js"></script>
+        <script>
+          var map = L.map('map', {
+            zoomControl:true, maxZoom:22, minZoom:1
+        }).setView([41.692264, 2.462247], 9);
+        var mapboxbasic = L.tileLayer('https://api.mapbox.com/styles/v1/gestiotransport/ckcoc59r3035a1ilz1nklx99i/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2VzdGlvdHJhbnNwb3J0IiwiYSI6ImNrOGluZGFscDAxaGQzaG10am44YW91bHIifQ.7Y_RPPdMNmQSjqm55YenAQ', {
+            maxZoom: 20,
+            zIndex: 1
+        }).addTo(map);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_CorredorsVerticals_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:16px;"><strong>' + (feature.properties['CODIVIA'] !== null ? autolinker.link(feature.properties['CODIVIA'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:14px; padding-bottom: 10px;"><strong>' + (feature.properties['DENOMINACI'] !== null ? autolinker.link(feature.properties['DENOMINACI'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">INICI:</th>\
+                        <td>' + (feature.properties['INICI'] !== null ? autolinker.link(feature.properties['INICI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FINAL:</th>\
+                        <td>' + (feature.properties['FINAL'] !== null ? autolinker.link(feature.properties['FINAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CorredorsVerticals_0_0() {
+            return {
+                pane: 'pane_CorredorsVerticals_0',
+                opacity: 1,
+                color: 'rgba(255,158,23,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CorredorsVerticals_0');
+        map.getPane('pane_CorredorsVerticals_0').style.zIndex = 400;
+        map.getPane('pane_CorredorsVerticals_0').style['mix-blend-mode'] = 'normal';
+        var layer_CorredorsVerticals_0 = new L.geoJson(json_CorredorsVerticals_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CorredorsVerticals_0',
+            layerName: 'layer_CorredorsVerticals_0',
+            pane: 'pane_CorredorsVerticals_0',
+            onEachFeature: pop_CorredorsVerticals_0,
+            style: style_CorredorsVerticals_0_0,
+        });
+        bounds_group.addLayer(layer_CorredorsVerticals_0);
+        map.addLayer(layer_CorredorsVerticals_0);
+        function pop_CorredorsTransversals_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:16px;"><strong>' + (feature.properties['CODIVIA'] !== null ? autolinker.link(feature.properties['CODIVIA'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:14px; padding-bottom: 10px;"><strong>' + (feature.properties['DENOMINACI'] !== null ? autolinker.link(feature.properties['DENOMINACI'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">INICI:</th>\
+                        <td>' + (feature.properties['INICI'] !== null ? autolinker.link(feature.properties['INICI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FINAL:</th>\
+                        <td>' + (feature.properties['FINAL'] !== null ? autolinker.link(feature.properties['FINAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CorredorsTransversals_1_0() {
+            return {
+                pane: 'pane_CorredorsTransversals_1',
+                opacity: 1,
+                color: 'rgba(240,0,18,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CorredorsTransversals_1');
+        map.getPane('pane_CorredorsTransversals_1').style.zIndex = 401;
+        map.getPane('pane_CorredorsTransversals_1').style['mix-blend-mode'] = 'normal';
+        var layer_CorredorsTransversals_1 = new L.geoJson(json_CorredorsTransversals_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CorredorsTransversals_1',
+            layerName: 'layer_CorredorsTransversals_1',
+            pane: 'pane_CorredorsTransversals_1',
+            onEachFeature: pop_CorredorsTransversals_1,
+            style: style_CorredorsTransversals_1_0,
+        });
+        bounds_group.addLayer(layer_CorredorsTransversals_1);
+        map.addLayer(layer_CorredorsTransversals_1);
+        function pop_CorredorsMediterraniSud_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:16px;"><strong>' + (feature.properties['CODIVIA'] !== null ? autolinker.link(feature.properties['CODIVIA'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:14px; padding-bottom: 10px;"><strong>' + (feature.properties['DENOMINACI'] !== null ? autolinker.link(feature.properties['DENOMINACI'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">INICI:</th>\
+                        <td>' + (feature.properties['INICI'] !== null ? autolinker.link(feature.properties['INICI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FINAL:</th>\
+                        <td>' + (feature.properties['FINAL'] !== null ? autolinker.link(feature.properties['FINAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CorredorsMediterraniSud_2_0() {
+            return {
+                pane: 'pane_CorredorsMediterraniSud_2',
+                opacity: 1,
+                color: 'rgba(144,39,135,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CorredorsMediterraniSud_2');
+        map.getPane('pane_CorredorsMediterraniSud_2').style.zIndex = 402;
+        map.getPane('pane_CorredorsMediterraniSud_2').style['mix-blend-mode'] = 'normal';
+        var layer_CorredorsMediterraniSud_2 = new L.geoJson(json_CorredorsMediterraniSud_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CorredorsMediterraniSud_2',
+            layerName: 'layer_CorredorsMediterraniSud_2',
+            pane: 'pane_CorredorsMediterraniSud_2',
+            onEachFeature: pop_CorredorsMediterraniSud_2,
+            style: style_CorredorsMediterraniSud_2_0,
+        });
+        bounds_group.addLayer(layer_CorredorsMediterraniSud_2);
+        map.addLayer(layer_CorredorsMediterraniSud_2);
+        function pop_CorredorsMediterraniNord_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:16px;"><strong>' + (feature.properties['CODIVIA'] !== null ? autolinker.link(feature.properties['CODIVIA'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2" style="text-align:center; font-size:14px; padding-bottom: 10px;"><strong>' + (feature.properties['DENOMINACI'] !== null ? autolinker.link(feature.properties['DENOMINACI'].toLocaleString()) : '') + '</strong></td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">INICI:</th>\
+                        <td>' + (feature.properties['INICI'] !== null ? autolinker.link(feature.properties['INICI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FINAL:</th>\
+                        <td>' + (feature.properties['FINAL'] !== null ? autolinker.link(feature.properties['FINAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CorredorsMediterraniNord_3_0() {
+            return {
+                pane: 'pane_CorredorsMediterraniNord_3',
+                opacity: 1,
+                color: 'rgba(0,94,84,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CorredorsMediterraniNord_3');
+        map.getPane('pane_CorredorsMediterraniNord_3').style.zIndex = 403;
+        map.getPane('pane_CorredorsMediterraniNord_3').style['mix-blend-mode'] = 'normal';
+        var layer_CorredorsMediterraniNord_3 = new L.geoJson(json_CorredorsMediterraniNord_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CorredorsMediterraniNord_3',
+            layerName: 'layer_CorredorsMediterraniNord_3',
+            pane: 'pane_CorredorsMediterraniNord_3',
+            onEachFeature: pop_CorredorsMediterraniNord_3,
+            style: style_CorredorsMediterraniNord_3_0,
+        });
+        bounds_group.addLayer(layer_CorredorsMediterraniNord_3);
+        map.addLayer(layer_CorredorsMediterraniNord_3);
+        function pop_LiniesConflictives_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shortName'] !== null ? autolinker.link(feature.properties['shortName'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longName'] !== null ? autolinker.link(feature.properties['longName'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gtfsId'] !== null ? autolinker.link(feature.properties['gtfsId'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['agency'] !== null ? autolinker.link(feature.properties['agency'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LiniesConflictives_4_0() {
+            return {
+                pane: 'pane_LiniesConflictives_4',
+                opacity: 1,
+                color: 'rgba(30,134,219,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_LiniesConflictives_4');
+        map.getPane('pane_LiniesConflictives_4').style.zIndex = 404;
+        map.getPane('pane_LiniesConflictives_4').style['mix-blend-mode'] = 'normal';
+        var layer_LiniesConflictives_4 = new L.geoJson(json_LiniesConflictives_4, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_LiniesConflictives_4',
+            layerName: 'layer_LiniesConflictives_4',
+            pane: 'pane_LiniesConflictives_4',
+            onEachFeature: pop_LiniesConflictives_4,
+            style: style_LiniesConflictives_4_0,
+        });
+        bounds_group.addLayer(layer_LiniesConflictives_4);
+        map.addLayer(layer_LiniesConflictives_4);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/LiniesConflictives_4.png" /> Linies Conflictives': layer_LiniesConflictives_4,'<img src="legend/CorredorsMediterraniNord_3.png" /> Corredors Mediterrani Nord': layer_CorredorsMediterraniNord_3,'<img src="legend/CorredorsMediterraniSud_2.png" /> Corredors Mediterrani Sud': layer_CorredorsMediterraniSud_2,'<img src="legend/CorredorsTransversals_1.png" /> Corredors Transversals': layer_CorredorsTransversals_1,'<img src="legend/CorredorsVerticals_0.png" /> Corredors Verticals': layer_CorredorsVerticals_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
