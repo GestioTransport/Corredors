@@ -246,15 +246,13 @@
         function pop_LiniesConflictives_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['shortName'] !== null ? autolinker.link(feature.properties['shortName'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2" style="font-size: 16px; text-align:center;"><strong>' + (feature.properties['shortName'] !== null ? autolinker.link(feature.properties['shortName'].toLocaleString()) : '') + '</strong></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['longName'] !== null ? autolinker.link(feature.properties['longName'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2" style="text-align:center; font-size: 14px;">' + (feature.properties['longName'] !== null ? autolinker.link(feature.properties['longName'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['gtfsId'] !== null ? autolinker.link(feature.properties['gtfsId'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
+                        <th scope="row">OPERADORA:</th>\
                         <td colspan="2">' + (feature.properties['agency'] !== null ? autolinker.link(feature.properties['agency'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
